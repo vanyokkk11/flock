@@ -1,0 +1,495 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #d0d8e0;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    padding: 20px 0;
+}
+
+.wrap {
+    width: 980px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* ШАПКА */
+.header {
+    background: #2B587A;
+    padding: 8px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #1a3a5a;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffdd77;
+}
+
+.nav a {
+    color: #c0d8ec;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.nav a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.user-info {
+    color: #ddd;
+    font-size: 13px;
+}
+
+.user-info a {
+    color: #ff9999;
+    text-decoration: none;
+}
+
+/* КОНТЕНТ */
+.content {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.col-left {
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.col-center {
+    flex: 1;
+}
+
+.col-right {
+    width: 230px;
+    flex-shrink: 0;
+}
+
+/* АВАТАР */
+.avatar {
+    border: 3px solid white;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    background: white;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.mini-avatar {
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.avatar-small {
+    border-radius: 5px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.status-block {
+    margin: 10px 0;
+}
+
+.status-block input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.status-block button {
+    margin-top: 5px;
+    padding: 3px 12px;
+    background: #e1e5e8;
+    border: 1px solid #a0a8b0;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.status-block button:hover {
+    background: #d0d5d8;
+}
+
+.status-display {
+    padding: 8px;
+    background: #f0f3f6;
+    border-radius: 3px;
+    margin: 10px 0;
+    font-style: italic;
+    color: #555;
+}
+
+/* ПОСТЫ */
+.post-form {
+    background: #f0f3f6;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.post-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    resize: vertical;
+}
+
+.post-form button {
+    margin-top: 8px;
+    padding: 8px 25px;
+    background: #2B587A;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.post-form button:hover {
+    background: #1a3a5a;
+}
+
+.post {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e4e8;
+    border-radius: 5px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.post-header a {
+    color: #2B587A;
+    text-decoration: none;
+}
+
+.post-header a:hover {
+    text-decoration: underline;
+}
+
+.date {
+    color: #888;
+    font-size: 11px;
+    margin-left: auto;
+}
+
+.delete {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.post-text {
+    padding: 5px 0;
+    line-height: 1.5;
+}
+
+.post-actions {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.post-actions a {
+    color: #2B587A;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.post-actions a:hover {
+    text-decoration: underline;
+}
+
+/* КОММЕНТАРИИ */
+.comments-block {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.comment {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.comment b {
+    color: #2B587A;
+}
+
+.comments-block form {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.comments-block input {
+    flex: 1;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.comments-block button {
+    padding: 6px 15px;
+    background: #2B587A;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* ПРАВАЯ КОЛОНКА */
+.weather {
+    background: #f0f3f6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.weather small {
+    font-size: 12px;
+    color: #666;
+}
+
+.col-right h3 {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.friend-online {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 5px;
+    background: #f5f8fa;
+    border-radius: 3px;
+}
+
+.friend-online a {
+    color: #2B587A;
+    text-decoration: none;
+}
+
+.friend-online a:hover {
+    text-decoration: underline;
+}
+
+.friend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.friend a {
+    color: #2B587A;
+    text-decoration: none;
+}
+
+/* ДРУЗЬЯ (страница) */
+.friend-card {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    background: white;
+}
+
+.friend-card img {
+    margin-bottom: 10px;
+}
+
+.friend-card a {
+    color: #2B587A;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.friend-card a:hover {
+    text-decoration: underline;
+}
+
+/* АВТОРИЗАЦИЯ */
+.auth-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #2B587A, #1a2a3a);
+}
+
+.auth-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    width: 350px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.auth-box h1 {
+    text-align: center;
+    color: #2B587A;
+}
+
+.auth-box h2 {
+    text-align: center;
+    color: #333;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.auth-box button {
+    width: 100%;
+    padding: 12px;
+    background: #2B587A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.auth-box button:hover {
+    background: #1a3a5a;
+}
+
+.auth-box a {
+    color: #2B587A;
+    text-decoration: none;
+}
+
+.auth-box a:hover {
+    text-decoration: underline;
+}
+
+.auth-box p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.success {
+    color: green;
+    text-align: center;
+}
+
+.btn-success {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.btn-success:hover {
+    background: #45a049;
+}
+
+.btn-danger {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.btn-danger:hover {
+    background: #da190b;
+}
+
+/* ПЛЕЕР */
+.footer-player {
+    background: #1a2a3a;
+    color: #aaa;
+    padding: 10px 20px;
+    font-size: 13px;
+    border-top: 2px solid #0a1a2a;
+    clear: both;
+}
+
+.clear {
+    clear: both;
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+    .wrap {
+        width: 100%;
+        border-radius: 0;
+    }
+    .content {
+        flex-direction: column;
+    }
+    .col-left, .col-right {
+        width: 100%;
+    }
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flock — Главная</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- Шапка -->
+        <div class="header">
+            <div class="logo">🕊️ Flock</div>
+            <div class="nav">
+                <a href="index.html"><b>Главная</b></a>
+                <a href="profile.html">Мой профиль</a>
+                <a href="friends.html">Друзья</a>
+            </div>
+            <div class="user-info" id="userInfo">
+                <span id="userName">Загрузка...</span>
+                <a href="#" onclick="logout()" style="color:#ff8888;">[Выйти]</a>
+            </div>
+        </div>
+
+        <!-- Контент -->
+        <div class="content">
+            <!-- Левая колонка -->
+            <div class="col-left">
+                <img src="avatars/default.jpg" width="180" class="avatar" id="userAvatar">
+                <br>
+                <b id="userNameSidebar">Загрузка...</b>
+                <br>
+                <span style="color: green;" id="userStatus">🟢 Онлайн</span>
+                <br>
+                <div class="status-block">
+                    <input type="text" id="statusInput" placeholder="Статус...">
+                    <button onclick="updateStatus()">Обновить</button>
+                </div>
+            </div>
+
+            <!-- Центр — стена -->
+            <div class="col-center">
+                <h2>📢 Лента новостей</h2>
+                
+                <!-- Форма поста -->
+                <div class="post-form">
+                    <textarea id="postText" rows="3" placeholder="Что у тебя нового?" required></textarea>
+                    <br>
+                    <button onclick="addPost()">Отправить</button>
+                </div>
+
+                <!-- Посты -->
+                <div id="postsContainer"></div>
+            </div>
+
+            <!-- Правая колонка -->
+            <div class="col-right">
+                <div class="weather">☀️ +22°C <small>Москва</small></div>
+                <h3>👥 Друзья онлайн</h3>
+                <div id="onlineFriends"></div>
+            </div>
+        </div>
+
+        <!-- Плеер -->
+        <div class="footer-player">
+            ♪ Сейчас играет: The Strokes — Last Nite 
+            <span style="float:right;">▶ II ████▌░░░</span>
+        </div>
+    </div>
+
+    <!-- Подключаем Firebase -->
+    <script type="module">
+        import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { auth, db } from './js/firebase-config.js';
+        import { logout } from './js/auth.js';
+        import { addPost, getPosts, updateStatus } from './js/posts.js';
+        import { getOnlineFriends } from './js/friends.js';
+
+        // Делаем функции глобальными
+        window.logout = logout;
+        window.addPost = addPost;
+        window.updateStatus = updateStatus;
+
+        // Проверка авторизации
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // Получаем данные пользователя
+                const userDoc = await getDoc(doc(db, 'users', user.uid));
+                const userData = userDoc.data();
+                
+                document.getElementById('userName').textContent = userData.name;
+                document.getElementById('userNameSidebar').textContent = userData.name;
+                document.getElementById('userAvatar').src = `avatars/${userData.avatar || 'default.jpg'}`;
+                document.getElementById('userStatus').textContent = userData.online ? '🟢 Онлайн' : '⚪ Не в сети';
+                document.getElementById('statusInput').value = userData.status || '';
+
+                // Загружаем посты
+                getPosts();
+
+                // Загружаем друзей онлайн
+                getOnlineFriends();
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>
